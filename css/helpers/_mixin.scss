@@ -1,0 +1,30 @@
+@mixin reset{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@mixin  centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin keyF($name){
+    @-webkit-keyframes #{$name}{
+        @content ;
+    }
+    @keyframes #{$name}{
+        @content ;
+    }
+}
+
+@mixin circle($dimensions) {
+    width: $dimensions;
+    height: $dimensions;
+    border-radius: 50%;
+}
+
+@mixin rgba($color, $opacity) {
+    background-color: rgba($color, $opacity);
+}

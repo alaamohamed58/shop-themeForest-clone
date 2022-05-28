@@ -1,0 +1,158 @@
+// @import "./media" ;
+/*global*/
+@import "./mixin";
+:root {
+  --main-color: #fed700;
+  --main-color-alt: #dc3545;
+  --secondary: #e6e6e6;
+  --head-color: #333333;
+  --linksColor: #9e9e9e;
+  --main-transition: 0.5s;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+* {
+  @include reset;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding: {
+    left: 15px;
+    right: 15px;
+  }
+  margin : {
+    right: auto;
+    left: auto;
+  }
+  @media (min-width: 768px) {
+    width: 750px;
+  }
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+}
+
+$socials: (
+  "facebook": #3b5998,
+  "twitter": #1da1f2,
+  "google": #ea4335,
+  "pinterest": #bd081c,
+  "instagram": #c32aa3,
+);
+
+@each $name, $color in $socials {
+  ##{$name} {
+    color: $color;
+  }
+}
+
+@mixin hover {
+  background-color: #eee;
+  color: var(--main-color);
+}
+%h2 {
+  margin: 20px;
+  text-transform: capitalize;
+  color: var(--head-color);
+  font-weight: 600;
+}
+
+%h4 {
+  text-transform: uppercase;
+  color: var(--main-color);
+}
+
+%h3 {
+  text-transform: uppercase;
+  line-height: 1.3;
+  font-size: 45px;
+  opacity: 0.7;
+  margin: 20px 0;
+}
+
+%button {
+  border: none;
+  background: var(--main-color);
+  padding: 13px 25px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+#addToCart {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  background: var(--main-color);
+  padding: 10px;
+  text-transform: uppercase;
+  color: var(--head-color);
+  font-size: 13px;
+  transition: all var(--main-transition);
+  opacity: 0;
+  cursor: pointer;
+}
+
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  background-color: #fff;
+  top: 10%;
+  right: -5px;
+  transform: translateY(-10%);
+  box-shadow: 0px 0px 1px rgb(0, 0, 0 / 10%);
+  padding: 8px;
+  z-index: 100;
+  transform: translateX(10px);
+  opacity: 0;
+  transition: all var(--main-transition);
+  i {
+    color: var(--head-color);
+    font-size: 17px;
+    cursor: pointer;
+  }
+  > div {
+    position: relative;
+    margin: 10px 0;
+    transition: all var(--main-transition);
+    &:hover span {
+      display: block;
+    }
+    span {
+      position: absolute;
+      background-color: #000;
+      color: #fff;
+      font-weight: bold;
+      right: 220%;
+      top: 0;
+      white-space: nowrap;
+      padding: 10px;
+      display: none;
+      &::before {
+        content: "";
+        position: absolute;
+        border: 10px solid transparent;
+        border-left-color: #000;
+        right: -20px;
+      }
+    }
+  }
+}
